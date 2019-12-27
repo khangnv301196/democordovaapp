@@ -132,4 +132,6 @@ border-color: #5f779d;
 .btn:hover, .btn:focus {
 outline: none;
 }
-
+.item{
+	margin-bottom: 5em;
+}

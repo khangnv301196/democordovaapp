@@ -16,7 +16,7 @@ var Controller = function() {
 
         bindEvents: function() {
         	$('.tab-button').on('click', this.onTabClick);
-        },
+        },  
 
         onTabClick: function(e) {
         	e.preventDefault();
@@ -30,9 +30,8 @@ var Controller = function() {
             } else if(tab === '#search-tab'){
                 self.renderSearchView();
             } else {
-                $('.tab-button').removeClass('active');
-                $('#login').addClass('active');
-                alert('Not Implement');
+                self.renderProfile();
+                //alert('Not Implement');
             }
         },
 
@@ -123,6 +122,34 @@ var Controller = function() {
                     alert(error);
                 });
             });
+        },
+
+        renderProfile: function(){
+            $('.tab-button').removeClass('active');
+            $('#login').addClass('active');
+            var $tab = $('#tab-content');
+            $tab.empty();
+            $("#tab-content").load("./views/fetch-api.html",function(data) {
+                var url = new URL('https://reqres.in/api/users');
+                var params = {page:2};
+                url.search = new URLSearchParams(params).toString();
+                fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data.data[0]); // Prints result from `response.json()` in getRequest
+                   var $template = $('#zl');
+                   $template.remove();
+                   for(var x in data.data){
+                    var $div =$template.clone();
+                    var profile = data.data[x];
+                    $div.find('#avatar').attr('src',profile.avatar);
+                    $div.find('#lala').text(profile.first_name+' '+profile.last_name);
+                    $tab.append($div);
+                   }
+                })
+                .catch(error => console.error(error))
+            });
+
         }
     }
     controller.initialize();
