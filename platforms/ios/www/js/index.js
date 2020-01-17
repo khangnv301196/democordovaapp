@@ -15,6 +15,8 @@ var app = {
         $('#btn_click').on('click',function(){
             window.history.back();
         });
+        var autoHideNavigationBar = false;
+        window.navigationbar.setUp(autoHideNavigationBar);	
     },
 
     overrideBrowserAlert: function() {

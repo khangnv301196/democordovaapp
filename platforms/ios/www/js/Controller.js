@@ -141,9 +141,10 @@ var Controller = function() {
                    $template.remove();
                    for(var x in data.data){
                     var $div =$template.clone();
+                    $div.addClass('xitem')
                     var profile = data.data[x];
                     $div.find('#avatar').attr('src',profile.avatar);
-                    $div.find('#lala').text(profile.first_name+' '+profile.last_name);
+                    $div.find('#txt_name').text(profile.first_name+' '+profile.last_name);
                     $tab.append($div);
                    }
                 })

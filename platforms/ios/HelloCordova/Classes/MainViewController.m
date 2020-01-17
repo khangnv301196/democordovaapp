@@ -1,4 +1,4 @@
-    /*
+/*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
  distributed with this work for additional information
@@ -75,7 +75,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-}   
+}
 
 - (void)viewDidUnload
 {
